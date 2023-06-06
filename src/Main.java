@@ -37,13 +37,17 @@ public class Main {
         PetrovaLida.addMother(PetrovaAnna);
 
 
-
-
         System.out.println(PetrovIvan);
         System.out.println(PetrovaAnna);
         System.out.println(PetrovMaksim);
         System.out.println(PetrovaMarina);
         System.out.println(PetrovaLida);
+
+
+        System.out.println(PetrovaMarina.getFather());
+        System.out.println(PetrovaMarina.getMother());
+        System.out.println(PetrovaAnna.getSpouse());
+        System.out.println(PetrovaAnna.getChildren());
 
 
     }
