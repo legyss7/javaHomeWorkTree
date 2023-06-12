@@ -25,6 +25,7 @@ public class Human {
         this.mother = mother;
         children = new ArrayList<>();
     }
+
     public Human(String name, String surname,
                  Gender gender, LocalDate birthday) {
         this(name, surname, gender, birthday, null, null);
@@ -43,18 +44,52 @@ public class Human {
     }
 
     public boolean addChild(Human child) {
-        if(!children.contains(child)){
-            this.children.add(child);
+        if (!children.contains(child)) {
+            children.add(child);
             return true;
         }
         return false;
     }
 
-    public String getFather() {
+    public String getName(){
+        return name;
+    }
+    public String getSurname(){
+        return surname;
+    }
+    public Gender getGender() {
+        return gender;
+    }
+
+    public LocalDate getBirthday() {
+        return birthday;
+    }
+
+    public LocalDate getDayOfDeath() {
+        return dayOfDeath;
+    }
+
+    public Human getFather() {
+        return father;
+    }
+
+    public Human getMother() {
+        return mother;
+    }
+
+    public Human getSpouse() {
+        return spouse;
+    }
+
+    public List<Human> getChildren() {
+        return children;
+    }
+
+    public String getFatherInfo() {
         String str = "Отец: ";
         if (father != null && father != null) {
             str = str + father.name + " " + father.surname + ", " +
-                    + father.birthday.getDayOfMonth() + " "
+                    +father.birthday.getDayOfMonth() + " "
                     + father.birthday.getMonth() + " "
                     + father.birthday.getYear() + "\n";
         } else {
@@ -63,11 +98,11 @@ public class Human {
         return str;
     }
 
-    public String getMother() {
+    public String getMotherInfo() {
         String str = "Мать: ";
         if (mother != null && mother != null) {
             str = str + mother.name + " " + mother.surname + ", " +
-                    + mother.birthday.getDayOfMonth() + " "
+                    +mother.birthday.getDayOfMonth() + " "
                     + mother.birthday.getMonth() + " "
                     + mother.birthday.getYear() + "\n";
         } else {
@@ -76,11 +111,11 @@ public class Human {
         return str;
     }
 
-    public String getSpouse() {
+    public String getSpouseInfo() {
         String str = "Супруг(-a): ";
         if (spouse != null && spouse != null) {
             str = str + spouse.name + " " + spouse.surname + ", " +
-                    + spouse.birthday.getDayOfMonth() + " "
+                    +spouse.birthday.getDayOfMonth() + " "
                     + spouse.birthday.getMonth() + " "
                     + spouse.birthday.getYear() + "\n";
         } else {
@@ -89,12 +124,12 @@ public class Human {
         return str;
     }
 
-    public String getChildren() {
+    public String getChildrenInfo() {
         String str = "Дети: ";
         if (children.size() != 0) {
             for (int i = 0; i < children.size(); i++) {
                 str = str + "\n" + children.get(i).name + " " + children.get(i).surname + ", " +
-                        + children.get(i).birthday.getDayOfMonth() + " "
+                        +children.get(i).birthday.getDayOfMonth() + " "
                         + children.get(i).birthday.getMonth() + " "
                         + children.get(i).birthday.getYear();
             }
@@ -105,29 +140,35 @@ public class Human {
         return str;
     }
 
+    public String getInfo() {
+        String str = name + " " + surname + ", " +
+                +birthday.getDayOfMonth() + " " + birthday.getMonth() + " " + birthday.getYear() + ". \n";
+        return str;
+    }
+
     @Override
     public String toString() {
         String str = "==============================================\n";
         str = str + name + " " + surname + ", " +
-                + birthday.getDayOfMonth() + " " + birthday.getMonth() + " " + birthday.getYear() + ". \n";
-        str = str + getFather();
-        str = str + getMother();
-        str = str + getSpouse();
-        str = str + getChildren();
+                +birthday.getDayOfMonth() + " " + birthday.getMonth() + " " + birthday.getYear() + ". \n";
+        str = str + getFatherInfo();
+        str = str + getMotherInfo();
+        str = str + getSpouseInfo();
+        str = str + getChildrenInfo();
 
         return str;
 
     }
 
     @Override
-    public boolean equals(Object obj){
-        if(this == obj){
+    public boolean equals(Object obj) {
+        if (this == obj) {
             return true;
         }
-        if(!(obj instanceof Human)){
+        if (!(obj instanceof Human)) {
             return false;
         }
         Human human = (Human) obj;
-        return human.name.equals(name);
+        return human.getInfo().equals(getInfo());
     }
 }
