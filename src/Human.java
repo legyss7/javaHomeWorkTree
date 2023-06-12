@@ -1,9 +1,10 @@
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Human {
+public class Human implements Serializable {
     private String name;
     private String surname;
     private Gender gender;
@@ -140,14 +141,13 @@ public class Human {
         return str;
     }
 
-    public String getInfo() {
+    public String getInfoHuman() {
         String str = name + " " + surname + ", " +
                 +birthday.getDayOfMonth() + " " + birthday.getMonth() + " " + birthday.getYear() + ". \n";
         return str;
     }
 
-    @Override
-    public String toString() {
+    public String getInfoHumanFull() {
         String str = "==============================================\n";
         str = str + name + " " + surname + ", " +
                 +birthday.getDayOfMonth() + " " + birthday.getMonth() + " " + birthday.getYear() + ". \n";
@@ -157,7 +157,6 @@ public class Human {
         str = str + getChildrenInfo();
 
         return str;
-
     }
 
     @Override
@@ -169,6 +168,6 @@ public class Human {
             return false;
         }
         Human human = (Human) obj;
-        return human.getInfo().equals(getInfo());
+        return human.getInfoHuman().equals(getInfoHuman());
     }
 }

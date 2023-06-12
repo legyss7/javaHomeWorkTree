@@ -1,9 +1,9 @@
+import java.io.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         FamilyTree tree = new FamilyTree();
 
@@ -17,22 +17,24 @@ public class Main {
         tree.add(PetrovaAnna);
 
         tree.add(new Human("Maksim", "Petrov", Gender.Male,
-                LocalDate.of(1980, 12,11),
+                LocalDate.of(1980, 12, 11),
                 tree.getByHuman("Ivan", "Petrov"),
                 tree.getByHuman("Anna", "Petrova")));
         tree.add(new Human("Marina", "Petrova", Gender.Female,
-                LocalDate.of(1985,1,13),
+                LocalDate.of(1985, 1, 13),
                 tree.getByHuman("Ivan", "Petrov"),
                 tree.getByHuman("Anna", "Petrova")));
-        tree.add(new Human("Lida", "Petrova",Gender.Female,
-                LocalDate.of(1990,9,14),
+        tree.add(new Human("Lida", "Petrova", Gender.Female,
+                LocalDate.of(1990, 9, 14),
                 tree.getByHuman("Ivan", "Petrov"),
                 tree.getByHuman("Anna", "Petrova")));
 
 
+        String fileName = "src/data.txt";
+        InterfaceIO interfaceIO = new FileHandler();
+        interfaceIO.save(tree, fileName);
+        FamilyTree treeFile = (FamilyTree) interfaceIO.read(fileName);
+        System.out.println(treeFile.getInfoFamilyTree());
 
-
-
-        System.out.println(tree.getByHuman("Anna", "Petrova"));
     }
 }
