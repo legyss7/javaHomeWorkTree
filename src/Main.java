@@ -32,8 +32,8 @@ public class Main {
 
         String fileName = "src/data.txt";
         InterfaceIO interfaceIO = new FileHandler();
-        interfaceIO.save(tree, fileName);
-        FamilyTree treeFile = (FamilyTree) interfaceIO.read(fileName);
+        interfaceIO.saveFile(tree, fileName);
+        FamilyTree treeFile = (FamilyTree) interfaceIO.readFile(fileName);
         System.out.println(treeFile.getInfoFamilyTree());
 
     }

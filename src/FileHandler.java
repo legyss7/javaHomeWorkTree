@@ -1,18 +1,11 @@
 import java.io.*;
-import java.util.BitSet;
 
 public class FileHandler implements InterfaceIO {
-
-
     @Override
-    public void save(Serializable serializable, String fileName) throws FileNotFoundException {
-        ObjectOutputStream objectOutputStream = null;
+    public void saveFile(Serializable serializable, String fileName) {
         try {
-            objectOutputStream = new ObjectOutputStream(new FileOutputStream(fileName));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        try {
+            ObjectOutputStream objectOutputStream =
+                    new ObjectOutputStream(new FileOutputStream(fileName));
             objectOutputStream.writeObject(serializable);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -20,9 +13,10 @@ public class FileHandler implements InterfaceIO {
     }
 
     @Override
-    public Object read(String fileName) {
+    public Object readFile(String fileName) {
         try {
-            ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(fileName));
+            ObjectInputStream objectInputStream =
+                    new ObjectInputStream(new FileInputStream(fileName));
             return objectInputStream.readObject();
         } catch (IOException e) {
             throw new RuntimeException(e);
