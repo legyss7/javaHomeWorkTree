@@ -1,9 +1,15 @@
-import java.io.*;
+
+import dataSave.FileHandler;
+import dataSave.InterfaceIO;
+import human.Gender;
+import human.Human;
+
 import java.time.LocalDate;
 
 
+
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         FamilyTree tree = new FamilyTree();
 
@@ -30,11 +36,27 @@ public class Main {
                 tree.getByHuman("Anna", "Petrova")));
 
 
-        String fileName = "src/data.txt";
+        String fileName = "src/dataSave/data.txt";
         InterfaceIO interfaceIO = new FileHandler();
         interfaceIO.saveFile(tree, fileName);
         FamilyTree treeFile = (FamilyTree) interfaceIO.readFile(fileName);
         System.out.println(treeFile.getInfoFamilyTree());
 
+
+        for (Human human : tree) {
+            System.out.println(human.getInfoHuman());
+        }
+        System.out.println();
+
+        tree.sortByName();
+        for (Human human : tree) {
+            System.out.println(human.getInfoHuman());
+        }
+        System.out.println();
+
+        tree.sortByBirthday();
+        for (Human human : tree) {
+            System.out.println(human.getInfoHuman());
+        }
     }
 }

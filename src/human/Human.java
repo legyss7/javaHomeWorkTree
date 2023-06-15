@@ -1,8 +1,9 @@
+package human;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class Human implements Serializable {
     private String name;
@@ -89,8 +90,8 @@ public class Human implements Serializable {
     public String getFatherInfo() {
         String str = "Отец: ";
         if (father != null && father != null) {
-            str = str + father.name + " " + father.surname + ", " +
-                    +father.birthday.getDayOfMonth() + " "
+            str = str + father.name + " " + father.surname + ", "
+                    + father.birthday.getDayOfMonth() + " "
                     + father.birthday.getMonth() + " "
                     + father.birthday.getYear() + "\n";
         } else {
@@ -102,8 +103,8 @@ public class Human implements Serializable {
     public String getMotherInfo() {
         String str = "Мать: ";
         if (mother != null && mother != null) {
-            str = str + mother.name + " " + mother.surname + ", " +
-                    +mother.birthday.getDayOfMonth() + " "
+            str = str + mother.name + " " + mother.surname + ", "
+                    + mother.birthday.getDayOfMonth() + " "
                     + mother.birthday.getMonth() + " "
                     + mother.birthday.getYear() + "\n";
         } else {
@@ -115,8 +116,8 @@ public class Human implements Serializable {
     public String getSpouseInfo() {
         String str = "Супруг(-a): ";
         if (spouse != null && spouse != null) {
-            str = str + spouse.name + " " + spouse.surname + ", " +
-                    +spouse.birthday.getDayOfMonth() + " "
+            str = str + spouse.name + " " + spouse.surname + ", "
+                    + spouse.birthday.getDayOfMonth() + " "
                     + spouse.birthday.getMonth() + " "
                     + spouse.birthday.getYear() + "\n";
         } else {
@@ -129,8 +130,8 @@ public class Human implements Serializable {
         String str = "Дети: ";
         if (children.size() != 0) {
             for (int i = 0; i < children.size(); i++) {
-                str = str + "\n" + children.get(i).name + " " + children.get(i).surname + ", " +
-                        +children.get(i).birthday.getDayOfMonth() + " "
+                str = str + "\n" + children.get(i).name + " " + children.get(i).surname + ", "
+                        + children.get(i).birthday.getDayOfMonth() + " "
                         + children.get(i).birthday.getMonth() + " "
                         + children.get(i).birthday.getYear();
             }
@@ -142,15 +143,15 @@ public class Human implements Serializable {
     }
 
     public String getInfoHuman() {
-        String str = name + " " + surname + ", " +
-                +birthday.getDayOfMonth() + " " + birthday.getMonth() + " " + birthday.getYear() + ". \n";
+        String str = name + " " + surname + ", "
+                + birthday.getDayOfMonth() + " " + birthday.getMonth() + " " + birthday.getYear();
         return str;
     }
 
     public String getInfoHumanFull() {
         String str = "==============================================\n";
-        str = str + name + " " + surname + ", " +
-                +birthday.getDayOfMonth() + " " + birthday.getMonth() + " " + birthday.getYear() + ". \n";
+        str = str + name + " " + surname + ", "
+                + birthday.getDayOfMonth() + " " + birthday.getMonth() + " " + birthday.getYear() + ". \n";
         str = str + getFatherInfo();
         str = str + getMotherInfo();
         str = str + getSpouseInfo();
@@ -170,4 +171,5 @@ public class Human implements Serializable {
         Human human = (Human) obj;
         return human.getInfoHuman().equals(getInfoHuman());
     }
+
 }
