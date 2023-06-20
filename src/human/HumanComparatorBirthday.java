@@ -2,9 +2,9 @@ package human;
 
 import java.util.Comparator;
 
-public class HumanComparatorBirthday  implements Comparator<Human> {
+public class HumanComparatorBirthday<T extends InterfaceHuman>  implements Comparator<T> {
     @Override
-    public int compare(Human o1, Human o2) {
+    public int compare(T o1, T o2) {
         return o1.getBirthday().compareTo(o2.getBirthday());
     }
 }

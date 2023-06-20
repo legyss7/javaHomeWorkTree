@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Human implements Serializable {
+public class Human implements Serializable, InterfaceHuman {
     private String name;
     private String surname;
     private Gender gender;
@@ -33,18 +33,20 @@ public class Human implements Serializable {
         this(name, surname, gender, birthday, null, null);
     }
 
+    @Override
     public void setFather(Human father) {
         this.father = father;
     }
-
+    @Override
     public void setMother(Human mother) {
         this.mother = mother;
     }
-
+    @Override
     public void setSpouse(Human spouse) {
         this.spouse = spouse;
     }
 
+    @Override
     public boolean addChild(Human child) {
         if (!children.contains(child)) {
             children.add(child);
@@ -52,41 +54,43 @@ public class Human implements Serializable {
         }
         return false;
     }
-
-    public String getName(){
+    @Override
+    public String getName() {
         return name;
     }
-    public String getSurname(){
+    @Override
+    public String getSurname() {
         return surname;
     }
+    @Override
     public Gender getGender() {
         return gender;
     }
-
+    @Override
     public LocalDate getBirthday() {
         return birthday;
     }
-
+    @Override
     public LocalDate getDayOfDeath() {
         return dayOfDeath;
     }
-
+    @Override
     public Human getFather() {
         return father;
     }
-
+    @Override
     public Human getMother() {
         return mother;
     }
-
+    @Override
     public Human getSpouse() {
         return spouse;
     }
-
+    @Override
     public List<Human> getChildren() {
         return children;
     }
-
+    @Override
     public String getFatherInfo() {
         String str = "Отец: ";
         if (father != null && father != null) {
@@ -99,7 +103,7 @@ public class Human implements Serializable {
         }
         return str;
     }
-
+    @Override
     public String getMotherInfo() {
         String str = "Мать: ";
         if (mother != null && mother != null) {
@@ -112,7 +116,7 @@ public class Human implements Serializable {
         }
         return str;
     }
-
+    @Override
     public String getSpouseInfo() {
         String str = "Супруг(-a): ";
         if (spouse != null && spouse != null) {
@@ -125,7 +129,7 @@ public class Human implements Serializable {
         }
         return str;
     }
-
+    @Override
     public String getChildrenInfo() {
         String str = "Дети: ";
         if (children.size() != 0) {
@@ -141,13 +145,13 @@ public class Human implements Serializable {
         }
         return str;
     }
-
+    @Override
     public String getInfoHuman() {
         String str = name + " " + surname + ", "
                 + birthday.getDayOfMonth() + " " + birthday.getMonth() + " " + birthday.getYear();
         return str;
     }
-
+    @Override
     public String getInfoHumanFull() {
         String str = "==============================================\n";
         str = str + name + " " + surname + ", "

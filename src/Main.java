@@ -6,12 +6,10 @@ import human.Human;
 
 import java.time.LocalDate;
 
-
-
 public class Main {
     public static void main(String[] args) {
 
-        FamilyTree tree = new FamilyTree();
+        FamilyTree<Human> tree = new FamilyTree<>();
 
         Human PetrovIvan = new Human("Ivan", "Petrov", Gender.Male,
                 LocalDate.of(1960, 1, 1));
