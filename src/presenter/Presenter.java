@@ -23,4 +23,16 @@ public class Presenter {
     public void getAllNote() {
         System.out.println(service.getInfoFamilyTree());
     }
+
+    public void loadFile(){
+        service.loadFile();
+        System.out.println("Данные загружены \n");
+    }
+
+    public void saveFile(){
+        service.saveFile();
+        System.out.println("Данные сохранены \n");
+    }
+
+
 }

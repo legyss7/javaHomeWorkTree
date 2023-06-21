@@ -1,7 +1,10 @@
 package model;
 
+import dataSave.FileHandler;
+import dataSave.InterfaceIO;
 import human.Gender;
 import human.Human;
+
 import java.time.LocalDate;
 import java.util.Map;
 
@@ -21,26 +24,22 @@ public class Service {
         }
         LocalDate localDate;
         String date;
-        if(infoHuman.get("year") != "" && infoHuman.get("month") != "" && infoHuman.get("day") != "")
-        {
+        if (infoHuman.get("year") != "" && infoHuman.get("month") != "" && infoHuman.get("day") != "") {
             String month = infoHuman.get("month");
             String day = infoHuman.get("day");
-            if(Integer.parseInt(month) < 10){
+            if (Integer.parseInt(month) < 10) {
                 month = "-0" + month;
-            }
-            else{
+            } else {
                 month = "-" + month;
             }
-            if(Integer.parseInt(day) < 10){
+            if (Integer.parseInt(day) < 10) {
                 day = "-0" + day;
-            }
-            else {
+            } else {
                 day = "-" + day;
             }
             date = infoHuman.get("year") + month + day;
 
-        }
-        else {
+        } else {
             date = "1111-11-11";
         }
         localDate = LocalDate.parse(date);
@@ -50,14 +49,15 @@ public class Service {
                 tree.getByHuman(infoHuman.get("motherName"), infoHuman.get("motherSurname")),
                 tree.getByHuman(infoHuman.get("spouseName"), infoHuman.get("spouseSurname"))));
 
-        if(infoHuman.get("spouseName") != "" && infoHuman.get("spouseSurname") != ""){
+        if (infoHuman.get("spouseName") != "" && infoHuman.get("spouseSurname") != "") {
             tree.getByHuman(infoHuman.get("spouseName"), infoHuman.get("spouseSurname"))
                     .setSpouse(tree.getByHuman(infoHuman.get("name"), infoHuman.get("surname")));
         }
     }
+
     public String getHuman(Map<String, String> infoHuman) {
         Human human = tree.getByHuman(infoHuman.get("name"), infoHuman.get("surname"));
-        if(human == null){
+        if (human == null) {
             return "Человек ненайден!\n";
         }
         return human.getInfoHumanFull();
@@ -66,4 +66,19 @@ public class Service {
     public String getInfoFamilyTree() {
         return tree.getInfoFamilyTree();
     }
+
+    public void loadFile() {
+        String fileName = "src/dataSave/data.txt";
+        InterfaceIO interfaceIO = new FileHandler();
+        tree = (FamilyTree) interfaceIO.readFile(fileName);
+        System.out.println(tree.getInfoFamilyTree());
+    }
+
+    public void saveFile() {
+        String fileName = "src/dataSave/data.txt";
+        InterfaceIO interfaceIO = new FileHandler();
+        interfaceIO.saveFile(tree, fileName);
+    }
+
+
 }

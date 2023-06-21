@@ -108,6 +108,14 @@ public class ConsoleUI implements View {
         presenter.getNote(infoHuman);
     }
 
+    public void loadFile(){
+        presenter.loadFile();
+    }
+
+    public void saveFile(){
+        presenter.saveFile();
+    }
+
     public void getAllNote() {
         presenter.getAllNote();
     }

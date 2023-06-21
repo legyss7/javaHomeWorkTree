@@ -13,6 +13,8 @@ public class MainMenu {
         commandList.add(new AddHuman(consoleUI));
         commandList.add(new GetHuman(consoleUI));
         commandList.add(new GetAllNote(consoleUI));
+        commandList.add(new SaveFile(consoleUI));
+        commandList.add(new LoadFile(consoleUI));
         commandList.add(new Finish(consoleUI));
     }
 
