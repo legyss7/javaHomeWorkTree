@@ -18,19 +18,20 @@ public class Human implements Serializable, InterfaceHuman {
 
 
     public Human(String name, String surname,
-                 Gender gender, LocalDate birthday, Human father, Human mother) {
+                 Gender gender, LocalDate birthday, Human father, Human mother, Human spouse) {
         this.name = name;
         this.surname = surname;
         this.gender = gender;
         this.birthday = birthday;
         this.father = father;
         this.mother = mother;
+        this.spouse = spouse;
         children = new ArrayList<>();
     }
 
     public Human(String name, String surname,
                  Gender gender, LocalDate birthday) {
-        this(name, surname, gender, birthday, null, null);
+        this(name, surname, gender, birthday, null, null, null);
     }
 
     @Override

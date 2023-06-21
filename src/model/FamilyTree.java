@@ -1,3 +1,5 @@
+package model;
+
 import human.Human;
 import human.HumanComparatorBirthday;
 import human.HumanComparatorName;
@@ -48,9 +50,9 @@ public class FamilyTree<T extends InterfaceHuman> implements Serializable, Itera
 
     public String getInfoFamilyTree() {
         StringBuilder sb = new StringBuilder();
-        sb.append("В дереве ");
+        sb.append("Количество записей: ");
         sb.append(humanList.size());
-        sb.append(" объектов: \n");
+        sb.append("\n");
         for (T human : humanList) {
             sb.append(human.getInfoHumanFull());
             sb.append("\n");
