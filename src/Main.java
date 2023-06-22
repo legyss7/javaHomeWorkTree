@@ -1,14 +1,6 @@
 
-import dataSave.FileHandler;
-import dataSave.InterfaceIO;
-import human.Gender;
-import human.Human;
-import model.FamilyTree;
 import view.ConsoleUI;
 import view.View;
-
-
-import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
@@ -40,27 +32,27 @@ public class Main {
 //                tree.getByHuman("Anna", "Petrova"),null));
 //
 //
-//        String fileName = "src/dataSave/data.txt";
+//        String fileName = "src/model.dataSave/data.txt";
 //        InterfaceIO interfaceIO = new FileHandler();
 //        interfaceIO.saveFile(tree, fileName);
 //        FamilyTree treeFile = (FamilyTree) interfaceIO.readFile(fileName);
 //        System.out.println(treeFile.getInfoFamilyTree());
 
 
-//        for (Human human : tree) {
-//            System.out.println(human.getInfoHuman());
+//        for (Human model.human : tree) {
+//            System.out.println(model.human.getInfoHuman());
 //        }
 //        System.out.println();
 //
 //        tree.sortByName();
-//        for (Human human : tree) {
-//            System.out.println(human.getInfoHuman());
+//        for (Human model.human : tree) {
+//            System.out.println(model.human.getInfoHuman());
 //        }
 //        System.out.println();
 //
 //        tree.sortByBirthday();
-//        for (Human human : tree) {
-//            System.out.println(human.getInfoHuman());
+//        for (Human model.human : tree) {
+//            System.out.println(model.human.getInfoHuman());
 //        }
     }
 

@@ -1,6 +1,5 @@
-package dataSave;
+package model.dataSave;
 
-import java.io.IOException;
 import java.io.Serializable;
 
 public interface InterfaceIO {

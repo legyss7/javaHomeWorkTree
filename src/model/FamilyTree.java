@@ -1,9 +1,9 @@
 package model;
 
-import human.Human;
-import human.HumanComparatorBirthday;
-import human.HumanComparatorName;
-import human.InterfaceHuman;
+import model.human.Human;
+import model.human.HumanComparatorBirthday;
+import model.human.HumanComparatorName;
+import model.human.InterfaceHuman;
 
 import java.io.Serializable;
 import java.util.ArrayList;

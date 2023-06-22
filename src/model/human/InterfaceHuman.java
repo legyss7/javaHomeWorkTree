@@ -1,7 +1,4 @@
-package human;
-
-import human.Gender;
-import human.Human;
+package model.human;
 
 import java.time.LocalDate;
 import java.util.List;
