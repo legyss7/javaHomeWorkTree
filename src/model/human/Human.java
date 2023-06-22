@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Human implements Serializable, InterfaceHuman {
+public class Human implements Serializable, InterfaceHuman<Human> {
     private String name;
     private String surname;
     private Gender gender;

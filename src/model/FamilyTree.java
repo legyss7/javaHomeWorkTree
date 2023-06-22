@@ -12,7 +12,7 @@ import java.util.Iterator;
 import java.util.List;
 
 
-public class FamilyTree<T extends InterfaceHuman> implements Serializable, Iterable<T> {
+public class FamilyTree<T extends InterfaceHuman<T>> implements Serializable, Iterable<T> {
     private List<T> humanList;
 
     public FamilyTree() {
@@ -28,10 +28,10 @@ public class FamilyTree<T extends InterfaceHuman> implements Serializable, Itera
         if (!humanList.contains(human)) {
             humanList.add(human);
             if (human.getFather() != null) {
-                human.getFather().addChild((Human) human);
+                human.getFather().addChild(human);
             }
             if (human.getMother() != null) {
-                human.getMother().addChild((Human) human);
+                human.getMother().addChild(human);
             }
             return true;
         }

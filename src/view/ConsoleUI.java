@@ -91,6 +91,7 @@ public class ConsoleUI implements View {
         System.out.println();
         if (infoHuman.get("name") != "" && infoHuman.get("surname") != "") {
             presenter.addHuman(infoHuman);
+            System.out.println("Запись добавлена \n");
         } else {
             System.out.println("Ошибка Ввода!");
             System.out.println("Поля: Имя и Фамилия являются обязательными!");

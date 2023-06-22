@@ -3,19 +3,19 @@ package model.human;
 import java.time.LocalDate;
 import java.util.List;
 
-public interface InterfaceHuman {
-    void setFather(Human father);
-    void setMother(Human mother);
-    void setSpouse(Human spouse);
-    boolean addChild(Human child);
+public interface  InterfaceHuman <T> {
+    void setFather(T father);
+    void setMother(T mother);
+    void setSpouse(T spouse);
+    boolean addChild(T child);
     String getName();
     String getSurname();
     Gender getGender();
     LocalDate getBirthday();
     LocalDate getDayOfDeath();
-    Human getFather();
-    Human getMother();
-    Human getSpouse();
+    T getFather();
+    T getMother();
+    T getSpouse();
     List<Human> getChildren();
     String getFatherInfo();
     String getMotherInfo();

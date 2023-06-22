@@ -4,7 +4,6 @@ import model.dataSave.FileHandler;
 import model.dataSave.InterfaceIO;
 import model.human.Gender;
 import model.human.Human;
-
 import java.time.LocalDate;
 import java.util.Map;
 
@@ -72,13 +71,13 @@ public class Service {
         InterfaceIO interfaceIO = new FileHandler();
         tree = (FamilyTree) interfaceIO.readFile(fileName);
         System.out.println(tree.getInfoFamilyTree());
+        System.out.println("Данные загружены \n");
     }
 
     public void saveFile() {
         String fileName = "src/model/dataSave/data.txt";
         InterfaceIO interfaceIO = new FileHandler();
         interfaceIO.saveFile(tree, fileName);
+        System.out.println("Данные сохранены \n");
     }
-
-
 }

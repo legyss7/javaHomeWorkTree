@@ -1,7 +1,6 @@
 package presenter;
 
 import model.Service;
-
 import java.util.Map;
 
 public class Presenter {
@@ -13,7 +12,6 @@ public class Presenter {
 
     public void addHuman(Map<String, String> infoHuman) {
         service.addHuman(infoHuman);
-        System.out.println("Запись добавлена \n");
     }
 
     public void getNote(Map<String, String> infoHuman) {
@@ -26,13 +24,9 @@ public class Presenter {
 
     public void loadFile(){
         service.loadFile();
-        System.out.println("Данные загружены \n");
     }
 
     public void saveFile(){
         service.saveFile();
-        System.out.println("Данные сохранены \n");
     }
-
-
 }
