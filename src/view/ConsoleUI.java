@@ -21,17 +21,17 @@ public class ConsoleUI implements View {
 
     @Override
     public void print(String text) {
-        System.out.println(text);
+        System.out.print(text);
     }
 
     @Override
     public void start() {
-        System.out.println("Приветствие");
+        print("Приветствие\n");
         while (work) {
             System.out.println(mainMenu.printMenu());
             int choice = inputNumMenu();
             if (choice == -1) {
-                System.out.println("Ошибка ввода");
+                System.out.println("Ошибка ввода\n");
                 continue;
             }
             mainMenu.execute(choice);
@@ -55,69 +55,71 @@ public class ConsoleUI implements View {
     }
 
     public void finish() {
-        System.out.println("Приятно было поработать)");
+        print("Приятно было поработать)\n");
         work = false;
     }
 
     public void addHuman() {
         Map<String, String> infoHuman = new HashMap<>();
 
-        System.out.print("Введите имя: ");
+        print("Введите имя: ");
         infoHuman.put("name", scanner.nextLine());
-        System.out.print("Введите фамилию: ");
+        print("Введите фамилию: ");
         infoHuman.put("surname", scanner.nextLine());
-        System.out.print("Пол (муж - 1, жен - 2): ");
+        print("Пол (муж - 1, жен - 2): ");
         infoHuman.put("gender", scanner.nextLine());
-        System.out.println("Введите дату рождения ");
-        System.out.print("Год: ");
+        print("Введите дату рождения \n");
+        print("Год: ");
         infoHuman.put("year", scanner.nextLine());
-        System.out.print("Месяц (цифрой): ");
+        print("Месяц (цифрой): ");
         infoHuman.put("month", scanner.nextLine());
-        System.out.print("Число (месяца): ");
+        print("Число (месяца): ");
         infoHuman.put("day", scanner.nextLine());
-        System.out.print("Введите имя отца: ");
+        print("Введите имя отца: ");
         infoHuman.put("fatherName", scanner.nextLine());
-        System.out.print("Введите фамилию отца: ");
+        print("Введите фамилию отца: ");
         infoHuman.put("fatherSurname", scanner.nextLine());
-        System.out.print("Введите имя матери: ");
+        print("Введите имя матери: ");
         infoHuman.put("motherName", scanner.nextLine());
-        System.out.print("Введите фамилию матери: ");
+        print("Введите фамилию матери: ");
         infoHuman.put("motherSurname", scanner.nextLine());
-        System.out.print("Введите имя супруа (-ги): ");
+        print("Введите имя супруа (-ги): ");
         infoHuman.put("spouseName", scanner.nextLine());
-        System.out.print("Введите фамилию супруа (-ги): ");
+        print("Введите фамилию супруа (-ги): ");
         infoHuman.put("spouseSurname", scanner.nextLine());
 
         System.out.println();
         if (infoHuman.get("name") != "" && infoHuman.get("surname") != "") {
             presenter.addHuman(infoHuman);
-            System.out.println("Запись добавлена \n");
+            print("Запись добавлена \n");
         } else {
-            System.out.println("Ошибка Ввода!");
-            System.out.println("Поля: Имя и Фамилия являются обязательными!");
-            System.out.println("Попробуйте снова!\n");
+            print("Ошибка Ввода!\n");
+            print("Поля: Имя и Фамилия являются обязательными!\n");
+            print("Попробуйте снова!\n");
         }
     }
 
     public void getHuman() {
         Map<String, String> infoHuman = new HashMap<>();
-        System.out.println("Поиск человека");
-        System.out.print("Введите имя: ");
+        print("Поиск человека\n");
+        print("Введите имя: ");
         infoHuman.put("name", scanner.nextLine());
-        System.out.print("Введите фамилию: ");
+        print("Введите фамилию: ");
         infoHuman.put("surname", scanner.nextLine());
-        presenter.getNote(infoHuman);
+        print(presenter.getNote(infoHuman));
     }
 
     public void loadFile(){
-        presenter.loadFile();
+        print(presenter.loadFile());
+        print("Данные загружены \n");
     }
 
     public void saveFile(){
         presenter.saveFile();
+        print("Данные сохранены \n");
     }
 
     public void getAllNote() {
-        presenter.getAllNote();
+        print(presenter.getAllNote());
     }
 }

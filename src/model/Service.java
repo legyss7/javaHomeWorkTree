@@ -9,9 +9,13 @@ import java.util.Map;
 
 public class Service {
     FamilyTree<Human> tree;
+    String fileName;
+    InterfaceIO interfaceIO;
 
     public Service() {
         tree = new FamilyTree<>();
+        fileName = "src/model/dataSave/data.txt";
+        interfaceIO = new FileHandler();
     }
 
     public void addHuman(Map<String, String> infoHuman) {
@@ -66,18 +70,13 @@ public class Service {
         return tree.getInfoFamilyTree();
     }
 
-    public void loadFile() {
-        String fileName = "src/model/dataSave/data.txt";
-        InterfaceIO interfaceIO = new FileHandler();
+    public String loadFile() {
         tree = (FamilyTree) interfaceIO.readFile(fileName);
-        System.out.println(tree.getInfoFamilyTree());
-        System.out.println("Данные загружены \n");
+        return tree.getInfoFamilyTree();
     }
 
     public void saveFile() {
-        String fileName = "src/model/dataSave/data.txt";
-        InterfaceIO interfaceIO = new FileHandler();
         interfaceIO.saveFile(tree, fileName);
-        System.out.println("Данные сохранены \n");
+
     }
 }

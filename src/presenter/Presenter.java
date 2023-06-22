@@ -1,6 +1,7 @@
 package presenter;
 
 import model.Service;
+
 import java.util.Map;
 
 public class Presenter {
@@ -14,19 +15,19 @@ public class Presenter {
         service.addHuman(infoHuman);
     }
 
-    public void getNote(Map<String, String> infoHuman) {
-        System.out.println(service.getHuman(infoHuman));
+    public String getNote(Map<String, String> infoHuman) {
+        return service.getHuman(infoHuman);
     }
 
-    public void getAllNote() {
-        System.out.println(service.getInfoFamilyTree());
+    public String getAllNote() {
+        return service.getInfoFamilyTree();
     }
 
-    public void loadFile(){
-        service.loadFile();
+    public String loadFile() {
+        return service.loadFile();
     }
 
-    public void saveFile(){
+    public void saveFile() {
         service.saveFile();
     }
 }
