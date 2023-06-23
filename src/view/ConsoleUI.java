@@ -12,11 +12,14 @@ public class ConsoleUI implements View {
     private boolean work;
     private MainMenu mainMenu;
 
+    private Map<String, String> infoDataHuman;
+
     public ConsoleUI() {
         scanner = new Scanner(System.in);
         work = true;
         mainMenu = new MainMenu(this);
         presenter = new Presenter();
+        infoDataHuman = new HashMap<>();
     }
 
     @Override
@@ -28,10 +31,10 @@ public class ConsoleUI implements View {
     public void start() {
         print("Приветствие\n");
         while (work) {
-            System.out.println(mainMenu.printMenu());
+            print(mainMenu.printMenu());
             int choice = inputNumMenu();
             if (choice == -1) {
-                System.out.println("Ошибка ввода\n");
+                print("Ошибка ввода\n");
                 continue;
             }
             mainMenu.execute(choice);
@@ -60,43 +63,55 @@ public class ConsoleUI implements View {
     }
 
     public void addHuman() {
-        Map<String, String> infoHuman = new HashMap<>();
-
-        print("Введите имя: ");
-        infoHuman.put("name", scanner.nextLine());
-        print("Введите фамилию: ");
-        infoHuman.put("surname", scanner.nextLine());
-        print("Пол (муж - 1, жен - 2): ");
-        infoHuman.put("gender", scanner.nextLine());
-        print("Введите дату рождения \n");
-        print("Год: ");
-        infoHuman.put("year", scanner.nextLine());
-        print("Месяц (цифрой): ");
-        infoHuman.put("month", scanner.nextLine());
-        print("Число (месяца): ");
-        infoHuman.put("day", scanner.nextLine());
-        print("Введите имя отца: ");
-        infoHuman.put("fatherName", scanner.nextLine());
-        print("Введите фамилию отца: ");
-        infoHuman.put("fatherSurname", scanner.nextLine());
-        print("Введите имя матери: ");
-        infoHuman.put("motherName", scanner.nextLine());
-        print("Введите фамилию матери: ");
-        infoHuman.put("motherSurname", scanner.nextLine());
-        print("Введите имя супруа (-ги): ");
-        infoHuman.put("spouseName", scanner.nextLine());
-        print("Введите фамилию супруа (-ги): ");
-        infoHuman.put("spouseSurname", scanner.nextLine());
-
-        System.out.println();
-        if (infoHuman.get("name") != "" && infoHuman.get("surname") != "") {
-            presenter.addHuman(infoHuman);
+        inputDataHuman();
+        if (checkInputDataHuman()) {
+            presenter.addHuman(infoDataHuman);
             print("Запись добавлена \n");
-        } else {
+        }
+        else {
             print("Ошибка Ввода!\n");
             print("Поля: Имя и Фамилия являются обязательными!\n");
             print("Попробуйте снова!\n");
         }
+        print("\n");
+    }
+
+    private void inputDataHuman() {
+        print("Введите имя: ");
+        infoDataHuman.put("name", scanner.nextLine());
+        print("Введите фамилию: ");
+        infoDataHuman.put("surname", scanner.nextLine());
+        print("Пол (муж - 1, жен - 2): ");
+        infoDataHuman.put("gender", scanner.nextLine());
+        print("Введите дату рождения \n");
+        print("Год: ");
+        infoDataHuman.put("year", scanner.nextLine());
+        print("Месяц (цифрой): ");
+        infoDataHuman.put("month", scanner.nextLine());
+        print("Число (месяца): ");
+        infoDataHuman.put("day", scanner.nextLine());
+        print("Введите имя отца: ");
+        infoDataHuman.put("fatherName", scanner.nextLine());
+        print("Введите фамилию отца: ");
+        infoDataHuman.put("fatherSurname", scanner.nextLine());
+        print("Введите имя матери: ");
+        infoDataHuman.put("motherName", scanner.nextLine());
+        print("Введите фамилию матери: ");
+        infoDataHuman.put("motherSurname", scanner.nextLine());
+        print("Введите имя супруа (-ги): ");
+        infoDataHuman.put("spouseName", scanner.nextLine());
+        print("Введите фамилию супруа (-ги): ");
+        infoDataHuman.put("spouseSurname", scanner.nextLine());
+        print("\n");
+    }
+
+    private boolean checkInputDataHuman() {
+        boolean checkFlag = true;
+        if (!(infoDataHuman.get("name") != ""
+                && infoDataHuman.get("surname") != "")) {
+            checkFlag = false;
+        }
+        return checkFlag;
     }
 
     public void getHuman() {
@@ -109,12 +124,12 @@ public class ConsoleUI implements View {
         print(presenter.getNote(infoHuman));
     }
 
-    public void loadFile(){
+    public void loadFile() {
         print(presenter.loadFile());
         print("Данные загружены \n");
     }
 
-    public void saveFile(){
+    public void saveFile() {
         presenter.saveFile();
         print("Данные сохранены \n");
     }
