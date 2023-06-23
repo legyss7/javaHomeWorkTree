@@ -25,27 +25,8 @@ public class Service {
         } else {
             gender = Gender.Female;
         }
-        LocalDate localDate;
-        String date;
-        if (infoHuman.get("year") != "" && infoHuman.get("month") != "" && infoHuman.get("day") != "") {
-            String month = infoHuman.get("month");
-            String day = infoHuman.get("day");
-            if (Integer.parseInt(month) < 10) {
-                month = "-0" + month;
-            } else {
-                month = "-" + month;
-            }
-            if (Integer.parseInt(day) < 10) {
-                day = "-0" + day;
-            } else {
-                day = "-" + day;
-            }
-            date = infoHuman.get("year") + month + day;
-
-        } else {
-            date = "1111-11-11";
-        }
-        localDate = LocalDate.parse(date);
+        LocalDate localDate = LocalDate.parse(infoHuman.get("year")
+                + infoHuman.get("month") + infoHuman.get("day"));
 
         tree.add(new Human(infoHuman.get("name"), infoHuman.get("surname"), gender,
                 localDate, tree.getByHuman(infoHuman.get("fatherName"), infoHuman.get("fatherSurname")),

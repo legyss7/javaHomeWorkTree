@@ -64,9 +64,15 @@ public class ConsoleUI implements View {
 
     public void addHuman() {
         inputDataHuman();
-        if (checkInputDataHuman()) {
-            presenter.addHuman(infoDataHuman);
-            print("Запись добавлена \n");
+        if (checkInputDataHumanName()) {
+            if (checkInputDataHumanDate()) {
+                presenter.addHuman(infoDataHuman);
+                print("Запись добавлена \n");
+            }
+            else{
+                print("Ошибка Ввода даты рождения!\n");
+                print("Попробуйте снова!\n");
+            }
         }
         else {
             print("Ошибка Ввода!\n");
@@ -105,13 +111,46 @@ public class ConsoleUI implements View {
         print("\n");
     }
 
-    private boolean checkInputDataHuman() {
+    private boolean checkInputDataHumanName() {
         boolean checkFlag = true;
         if (!(infoDataHuman.get("name") != ""
                 && infoDataHuman.get("surname") != "")) {
             checkFlag = false;
         }
         return checkFlag;
+    }
+
+    private boolean checkInputDataHumanDate() {
+        if (infoDataHuman.get("year") != "" && infoDataHuman.get("month") != "" && infoDataHuman.get("day") != "") {
+            String year = infoDataHuman.get("year");
+            String month = infoDataHuman.get("month");
+            String day = infoDataHuman.get("day");
+            if(Integer.parseInt(year) < 1000 || Integer.parseInt(year) > 10000){
+                return false;
+            }
+            if (Integer.parseInt(month) < 1 || Integer.parseInt(month) > 12) {
+                return false;
+            }
+            if (Integer.parseInt(day) < 1 || Integer.parseInt(day) > 31) {
+                return false;
+            }
+
+            if (Integer.parseInt(month) < 10) {
+                month = "-0" + month;
+            } else {
+                month = "-" + month;
+            }
+            if (Integer.parseInt(day) < 10) {
+                day = "-0" + day;
+            } else {
+                day = "-" + day;
+            }
+            infoDataHuman.put("month", month);
+            infoDataHuman.put("day", day);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public void getHuman() {
