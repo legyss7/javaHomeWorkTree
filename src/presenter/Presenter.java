@@ -7,7 +7,7 @@ import model.dataSave.InterfaceIO;
 import java.util.Map;
 
 public class Presenter {
-    Service service;
+    private Service service;
 
     public Presenter() {
         InterfaceIO interfaceIO = new FileHandler();

@@ -45,7 +45,7 @@ public class Service {
         if (human == null) {
             return "Человек ненайден!\n";
         }
-        return human.getInfoHumanFull();
+        return human.getInfoHumanFull() + "\n";
     }
 
     public String getInfoFamilyTree() {
