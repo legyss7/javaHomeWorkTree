@@ -1,6 +1,5 @@
 package model;
 
-import model.dataSave.FileHandler;
 import model.dataSave.InterfaceIO;
 import model.human.Gender;
 import model.human.Human;
@@ -8,15 +7,17 @@ import java.time.LocalDate;
 import java.util.Map;
 
 public class Service {
-    FamilyTree<Human> tree;
-    String fileName;
-    InterfaceIO interfaceIO;
+    private FamilyTree<Human> tree;
+    private String fileName;
+    private InterfaceIO interfaceIO;
 
-    public Service() {
+    public Service(InterfaceIO interfaceIO) {
         tree = new FamilyTree<>();
         fileName = "src/model/dataSave/data.txt";
-        interfaceIO = new FileHandler();
+        this.interfaceIO = interfaceIO;
     }
+
+
 
     public void addHuman(Map<String, String> infoHuman) {
         Gender gender;
@@ -52,7 +53,7 @@ public class Service {
     }
 
     public String loadFile() {
-        tree = (FamilyTree) interfaceIO.readFile(fileName);
+        tree = (FamilyTree<Human>) interfaceIO.readFile(fileName);
         return tree.getInfoFamilyTree();
     }
 

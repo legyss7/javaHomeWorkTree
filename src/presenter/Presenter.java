@@ -1,6 +1,8 @@
 package presenter;
 
 import model.Service;
+import model.dataSave.FileHandler;
+import model.dataSave.InterfaceIO;
 
 import java.util.Map;
 
@@ -8,7 +10,8 @@ public class Presenter {
     Service service;
 
     public Presenter() {
-        service = new Service();
+        InterfaceIO interfaceIO = new FileHandler();
+        service = new Service(interfaceIO);
     }
 
     public void addHuman(Map<String, String> infoHuman) {
